@@ -13,6 +13,10 @@ body {
     color: #5D5FEF;
 }
 
+.text-preline {
+    white-space: pre-line;
+}
+
 /* end of base */
 
 /* navbar start */

@@ -156,7 +156,7 @@ const showNewsDetails = async url => {
                 </div>
                 <div>
                     <h3 class="title">${news.title}</h3>
-                    <p class="news-description my-3"> ${(news.details).slice(0, 350)}${(news.details).length > 350 ? '...' : ''}</p>
+                    <p class="news-description my-3"> ${news.details}</p>
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="author-info d-flex align-items-center">
                             <div class="flex-shrink-0 me-2">
@@ -167,8 +167,8 @@ const showNewsDetails = async url => {
                                 <p class="news-date mb-0">${news.author.published_date ? news.author.published_date : 'No data found'}</p>
                             </div>
                         </div>
-                            <p class="mb-0 news-view text-center"><i class="far fa-eye pe-2"></i>${news.total_view ? news.total_view : 'No data found'}M</p>
-                            <div class="rating text-center">
+                            <p class="mb-0 news-view text-center text-nowrap pe-3"><i class="far fa-eye pe-2"></i>${news.total_view ? news.total_view : 'No data found'}M</p>
+                            <div class="rating text-center text-nowrap">
                                 <i class="fas fa-star-half-alt"></i>
                                 <i class="far fa-star"></i>
                                 <i class="far fa-star"></i>
@@ -178,6 +178,9 @@ const showNewsDetails = async url => {
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
         `
     }
