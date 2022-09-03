@@ -75,3 +75,51 @@ body {
 }
 
 /* categories end */
+
+/* news-item start */
+@media screen and (min-width: 992px) {
+    .news-item .news-thumbnail-box {
+        max-width: 240px;
+    }
+}
+
+.news-item .title {
+    font-size: 24px;
+    color: #121221;
+    font-weight: 700;
+}
+
+.news-item .news-description {
+    color: #949494;
+}
+
+.news-item .author-info {
+    width: 30%;
+}
+
+.news-item .author-name {
+    font-size: 16px;
+    color: #2B2C34;
+    font-weight: 400;
+}
+
+.news-item .news-date {
+    font-size: 14px;
+    color: #718797;
+}
+
+.news-action {
+    width: 70%;
+}
+
+@media screen and (max-width: 991px) {
+
+    .news-item .author-info,
+    .news-action {
+        width: 100%;
+    }
+}
+
+
+
+/* news-item end */
