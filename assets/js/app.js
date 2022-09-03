@@ -59,7 +59,10 @@ const loadNewsByCategory = async (categoryId = '08') => {
     try {
         const res = await fetch(url);
         const data = await res.json();
-        showNewsByCategory(data.data);
+        const newsArray = data.data.sort((a, b) => {
+            return (a.total_view > b.total_view ? -1 : 1)
+        });
+        showNewsByCategory(newsArray);
         newsUnderCategory(data.data.length);
     } catch (error) {
         console.log('no data found');
@@ -103,7 +106,7 @@ const showNewsByCategory = newsArray => {
                             </div>
                         </div>
                         <div class="d-flex align-items-center justify-content-between news-action mt-lg-0 mt-3">
-                            <p class="mb-0 news-view text-center"><i class="far fa-eye pe-2"></i>${news.total_view ? news.total_view : 'No data found'}M</p>
+                            <p class="mb-0 news-view text-center"><i class="far fa-eye pe-2"></i>${news.total_view ? (news.total_view + 'M') : 'No data found'}</p>
                             <div class="rating text-center">
                                 <i class="fas fa-star-half-alt"></i>
                                 <i class="far fa-star"></i>
