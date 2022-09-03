@@ -112,6 +112,10 @@ body {
     width: 70%;
 }
 
+.news-action .arrow-btn {
+    color: #5D5FEF;
+}
+
 @media screen and (max-width: 991px) {
 
     .news-item .author-info,
@@ -120,6 +124,13 @@ body {
     }
 }
 
-
-
 /* news-item end */
+
+/* footer start */
+footer p {
+    color: #949494;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+/* footer end */
