@@ -44,6 +44,24 @@ body {
     }
 }
 
-
-
 /* navbar end */
+
+/* categories start */
+@media screen and (min-width: 992px) {
+    .categories {
+        text-align: justify;
+    }
+}
+
+.categories .btn {
+    font-size: 18px;
+    color: #858585;
+}
+
+.categories .btn.active {
+    background-color: #EEEFFF;
+    border: none;
+    color: #5D5FEF;
+}
+
+/* categories end */
