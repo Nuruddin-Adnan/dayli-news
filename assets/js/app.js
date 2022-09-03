@@ -192,8 +192,3 @@ const showNewsDetails = async url => {
     }
     loader(false);
 }
-
-
-
-
-
