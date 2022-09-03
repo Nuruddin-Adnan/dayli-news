@@ -1,0 +1,49 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #F6F6F6;
+}
+
+/* end of base */
+
+/* navbar start */
+.navbar .navbar-brand {
+    color: #5D5FEF;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+.navbar .navbar-brand span {
+    background-color: #5D5FEF;
+    color: #fff;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+.navbar-nav .nav-link {
+    color: #A3A3A3;
+    display: block;
+    position: relative;
+}
+
+.navbar-nav .nav-link.active {
+    color: #5D5FEF;
+}
+
+@media screen and (min-width: 992px) {
+    .navbar-nav .nav-link.nav-link.active::before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 2px;
+        background-color: #5D5FEF;
+        border-radius: 2px;
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+
+
+/* navbar end */
