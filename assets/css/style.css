@@ -3,6 +3,16 @@ body {
     background-color: #F6F6F6;
 }
 
+.btn-purple {
+    background-color: #5D5FEF;
+    color: #fff;
+}
+
+.btn-outline-purple {
+    border-color: #5D5FEF;
+    color: #5D5FEF;
+}
+
 /* end of base */
 
 /* navbar start */
