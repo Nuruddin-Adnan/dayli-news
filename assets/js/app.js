@@ -60,7 +60,7 @@ const loadNewsByCategory = async (categoryId = '08') => {
         const res = await fetch(url);
         const data = await res.json();
         showNewsByCategory(data.data);
-        newsUnderCategory(data.data.length, data.data);
+        newsUnderCategory(data.data.length);
     } catch (error) {
         console.log('no data found');
     }
@@ -112,7 +112,7 @@ const showNewsByCategory = newsArray => {
                                 <i class="far fa-star"></i>
                             </div>
                             <div class="text-end">
-                                <button class="btn arrow-btn"><i class="fas fa-arrow-right"></i></button>
+                                <button class="btn arrow-btn" onclick="showNewsDetails('https://openapi.programming-hero.com/api/news/${news._id}')" data-bs-toggle="modal" data-bs-target="#newsModal"><i class="fas fa-arrow-right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -120,7 +120,6 @@ const showNewsByCategory = newsArray => {
             </div>
         </div>
         `
-
         newsElement.appendChild(article);
     });
 
@@ -128,10 +127,64 @@ const showNewsByCategory = newsArray => {
 }
 
 // news under a single category
-const newsUnderCategory = (count, categoryName) => {
+const newsUnderCategory = count => {
     const newsCountElement = document.getElementById('category-item-count');
     newsCountElement.innerText = count
-    console.log(categoryName);
+}
+
+
+// show news details with modal
+const showNewsDetails = async url => {
+    loader(true);
+    const newsContainer = document.getElementById('news-container');
+    newsContainer.innerHTML = '';
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const news = data.data[0];
+
+        console.log(news);
+
+        newsContainer.innerHTML = `
+        <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="flex-shrink-0 me-lg-3 mb-3 news-thumbnail-box">
+                    <img src="${news.thumbnail_url}" alt="" class="news-thumbnail w-100 rounded">
+                </div>
+                <div>
+                    <h3 class="title">${news.title}</h3>
+                    <p class="news-description my-3"> ${(news.details).slice(0, 350)}${(news.details).length > 350 ? '...' : ''}</p>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="author-info d-flex align-items-center">
+                            <div class="flex-shrink-0 me-2">
+                                <img src="${news.author.img}" alt="author" class="rounded-circle" width="40" height="40">
+                            </div>
+                            <div>
+                                <h6 class="author-name mb-0">${news.author.name ? news.author.name : 'No data found'}</h6>
+                                <p class="news-date mb-0">${news.author.published_date ? news.author.published_date : 'No data found'}</p>
+                            </div>
+                        </div>
+                            <p class="mb-0 news-view text-center"><i class="far fa-eye pe-2"></i>${news.total_view ? news.total_view : 'No data found'}M</p>
+                            <div class="rating text-center">
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `
+    }
+    catch (error) {
+        console.log(error);
+    }
+    loader(false);
 }
 
 
